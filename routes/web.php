@@ -19,7 +19,8 @@
 Route::get('/', function () {
   return view('welcome', [
     'name' => 'aaron',
-    'greeting' => 'Hello'
+    'greeting' => 'Hello',
+    'items' => ['apple', 'banana', 'tomato']
   ]);
 });
 
@@ -34,6 +35,10 @@ Route::get('/test', [
 Route::get('/test2', function () {
   info('Redirecting from test2 to test...'.'\n');
   return redirect(route('test'));
+});
+
+Route::get('/sample', function () {
+  return view('sample');
 });
 
 // 영어,숫자로 2자리 이상 5자리 이하로 구성된 경로만 처리
