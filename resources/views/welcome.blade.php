@@ -14,10 +14,24 @@
 </head>
 <body>
 <h1>
-  <?= isset($greeting) ? "$greeting" : "Hello Laravel"; ?>
+<!--?//= isset($greeting) ? "$greeting" : "Hello Laravel"; ?-->
+  {{$greeting or 'Helo Laravel'}}
 </h1>
 <h2>
-  <?= $name; ?>
+  <!--?= $name; ?-->
+  {{$name}}
 </h2>
+
+<h2>Blade if</h2>
+@if($itemCount = count($items))
+  <p>{{$itemCount}} items found</p>
+@else
+  <p>no items</p>
+@endif
+
+<h2>Blade foreach</h2>
+@foreach($items as $item)
+  <li>{{$item}}</li>
+@endforeach
 </body>
 </html>
