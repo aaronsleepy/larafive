@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $name
+ */
+?>
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -8,6 +13,11 @@
   <title>Laravel</title>
 </head>
 <body>
-Hello Laravel
+<h1>
+  <?= isset($greeting) ? "$greeting" : "Hello Laravel"; ?>
+</h1>
+<h2>
+  <?= $name; ?>
+</h2>
 </body>
 </html>

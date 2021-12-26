@@ -11,8 +11,16 @@
 |
 */
 
+//Route::get('/', function () {
+//  return view('welcome')
+//    ->with('name', 'aaron');
+//});
+
 Route::get('/', function () {
-  return view('welcome');
+  return view('welcome', [
+    'name' => 'aaron',
+    'greeting' => 'Hello'
+  ]);
 });
 
 // route name 지정
