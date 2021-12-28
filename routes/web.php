@@ -16,13 +16,7 @@
 //    ->with('name', 'aaron');
 //});
 
-Route::get('/', function () {
-  return view('welcome', [
-    'name' => 'aaron',
-    'greeting' => 'Hello',
-    'items' => ['apple', 'banana', 'tomato']
-  ]);
-});
+Route::get('/', 'WelcomeController@index');
 
 // route name 지정
 Route::get('/test', [
@@ -45,3 +39,5 @@ Route::get('/sample', function () {
 Route::get('/{foo?}', function ($foo = 'bar') {
   return "{$foo}";
 })->where('foo', '[0-9a-zA-Z]{2,5}');
+
+Route::resource('articles', 'ArticlesController');
