@@ -1,0 +1,29 @@
+CREATE TABLE articles(
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  title VARCHAR(255) ,
+  content TEXT ,
+  created_at DATETIME,
+  updated_at DATE,
+  user_id INT(11) UNSIGNED,
+
+  FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE = InnoDb DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+
+CREATE TABLE tags(
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(255) ,
+  slug VARCHAR(255) ,
+  created_at DATETIME ,
+  updated_at DATETIME ,
+
+  INDEX TAGS_SLUG_IDX (slug)
+) ENGINE = InnoDb DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+
+CREATE TABLE artlcle_tag(
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  article_id INT(11) UNSIGNED NOT NULL ,
+  tag_id INT(11) UNSIGNED NOT NULL,
+
+  FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE ,
+  FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+) ENGINE = InnoDb DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
