@@ -1,0 +1,9 @@
+CREATE TABLE users(
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(255) NOT NULL ,
+  email VARCHAR(255) NOT NULL UNIQUE ,
+  password VARCHAR(60) NOT NULL ,
+  remember_token VARCHAR(100) ,
+  created_at DATETIME,
+  updated_at DATETIME
+) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
