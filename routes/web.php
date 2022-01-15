@@ -88,3 +88,11 @@ Route::get('/{foo?}', function ($foo = 'bar') {
  * Resource Routes
  ****************************************/
 Route::resource('articles', 'ArticlesController');
+
+
+/****************************************
+ * Database listener
+ ****************************************/
+DB::listen(function ($query) {
+  dump($query->sql);
+});
