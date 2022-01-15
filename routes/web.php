@@ -90,9 +90,9 @@ Route::get('/{foo?}', function ($foo = 'bar') {
 Route::resource('articles', 'ArticlesController');
 
 
-/****************************************
- * Database listener
- ****************************************/
-DB::listen(function ($query) {
-  dump($query->sql);
-});
+///****************************************
+// * Database listener
+// ****************************************/
+//DB::listen(function ($query) {
+//  dump($query->sql);
+//});
