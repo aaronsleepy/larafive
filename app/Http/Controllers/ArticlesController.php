@@ -50,12 +50,13 @@ class ArticlesController extends Controller
         'title' => ['required'],
         'content' => ['required', 'min:10'],
       ];
-      $validator = Validator::make($request->all(), $rules);
-
-      if($validator->fails()) {
-        return back()->withErrors($validator)
-          ->withInput();
-      }
+//      $validator = Validator::make($request->all(), $rules);
+//
+//      if($validator->fails()) {
+//        return back()->withErrors($validator)
+//          ->withInput();
+//      }
+      $this->validate($request, $rules);
 
       $article = User::find(1)->articles()
         ->create($request->all());
