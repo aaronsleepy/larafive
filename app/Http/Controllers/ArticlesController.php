@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ArticlesController extends Controller
 {
@@ -29,7 +30,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -40,7 +41,10 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $output = new ConsoleOutput();
+      $output->writeln(json_encode($request->all(), JSON_PRETTY_PRINT));
+
+      return redirect(route('articles.index'));
     }
 
     /**
