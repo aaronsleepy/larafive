@@ -77,7 +77,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        return __METHOD__ . " returns articles of {$id}";
+      echo $foo;
+
+      return __METHOD__ . " returns articles of {$id}";
     }
 
     /**
