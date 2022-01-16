@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Requests\ArticlesRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -41,22 +42,22 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticlesRequest $request)
     {
       $output = new ConsoleOutput();
       $output->writeln(json_encode($request->all(), JSON_PRETTY_PRINT));
 
-      $rules = [
-        'title' => ['required'],
-        'content' => ['required', 'min:10'],
-      ];
+//      $rules = [
+//        'title' => ['required'],
+//        'content' => ['required', 'min:10'],
+//      ];
 //      $validator = Validator::make($request->all(), $rules);
 //
 //      if($validator->fails()) {
 //        return back()->withErrors($validator)
 //          ->withInput();
 //      }
-      $this->validate($request, $rules);
+//      $this->validate($request, $rules);
 
       $article = User::find(1)->articles()
         ->create($request->all());
