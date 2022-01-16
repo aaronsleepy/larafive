@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ArticlesController extends Controller
@@ -43,6 +45,24 @@ class ArticlesController extends Controller
     {
       $output = new ConsoleOutput();
       $output->writeln(json_encode($request->all(), JSON_PRETTY_PRINT));
+
+      $rules = [
+        'title' => ['required'],
+        'content' => ['required', 'min:10'],
+      ];
+      $validator = Validator::make($request->all(), $rules);
+
+      if($validator->fails()) {
+        return back()->withErrors($validator)
+          ->withInput();
+      }
+
+      $article = User::find(1)->articles()
+        ->create($request->all());
+
+      if (! $article) {
+        return back()->withInput();
+      }
 
       return redirect(route('articles.index'));
     }
