@@ -77,9 +77,11 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-//      echo $foo;
+      $article = Article::findOrFail($id);
+      debug($article->toArray());
 
-      return __METHOD__ . " returns articles of {$id}";
+//      return compact('article');
+      return view('articles.view', compact('article'));
     }
 
     /**
